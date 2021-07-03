@@ -33,7 +33,7 @@ public: // 公共函数
         return *this;
     }
 
-PRIVATE:// 私有变量定义
+private:// 私有变量定义
 
     F    _f;    // 回收函数
     bool _call; // 是否调用

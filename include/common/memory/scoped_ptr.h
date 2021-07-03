@@ -12,7 +12,7 @@ class scoped_ptr
 {
 public: // 公共函数
 
-    /**
+    /*
     * @brief      构造函数
     */
     scoped_ptr()
@@ -22,7 +22,7 @@ public: // 公共函数
 
     }
 
-    /**
+    /*
     * @brief      构造函数
     */
     explicit scoped_ptr( std::nullptr_t )
@@ -32,7 +32,7 @@ public: // 公共函数
 
     }
 
-    /**
+    /*
     * @brief      构造函数
     */
     explicit scoped_ptr( T* p )
@@ -42,7 +42,7 @@ public: // 公共函数
 
     }
 
-    /**
+    /*
     * @brief      构造函数
     */
     template<class D>
@@ -53,7 +53,7 @@ public: // 公共函数
 
     }
 
-    /**
+    /*
     * @brief      析构函数
     */
     ~scoped_ptr()
@@ -63,7 +63,7 @@ public: // 公共函数
         _del = nullptr;
     }
 
-    /**
+    /*
     * @brief      获取引用
     */
     T& operator*() const
@@ -71,7 +71,7 @@ public: // 公共函数
         return *_p;
     }
 
-    /**
+    /*
     * @brief      获取指针
     */
     T* operator->() const
@@ -79,7 +79,7 @@ public: // 公共函数
         return _p;
     }
 
-    /**
+    /*
     * @brief      重置指针
     */
     void reset( T* p = nullptr )
@@ -87,7 +87,7 @@ public: // 公共函数
         scoped_ptr( p ).swap( *this );
     }
 
-    /**
+    /*
     * @brief      重置指针
     */
     template<class D>
@@ -96,7 +96,7 @@ public: // 公共函数
         scoped_ptr( p, del ).swap( *this );
     }
 
-    /**
+    /*
     * @brief      有效性判断
     */
     explicit operator bool() const
@@ -104,7 +104,7 @@ public: // 公共函数
         return _p != nullptr;
     }
 
-    /**
+    /*
     * @brief      获取原始指针
     */
     T* get() const
@@ -114,7 +114,7 @@ public: // 公共函数
 
 private: // 私有函数
 
-    /**
+    /*
     * @brief      交换对象
     */
     void swap( scoped_ptr<T>& r )

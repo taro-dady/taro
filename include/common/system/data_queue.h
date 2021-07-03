@@ -79,29 +79,27 @@ public: /// 公共函数定义
     template<class Matcher>
     bool pick( D& data, Matcher matcher, int32_t ms = 2000 )
     {
-        static int32_t const wait_time = 50;
-
-        while( ms >= 0 )
+        auto cond = [&]()
         {
-            std::unique_lock<std::mutex> g( _mutex );
-            auto it = std::find_if( std::begin( _queue ), std::end( _queue ), matcher );
-            if( it != std::end( _queue ) )
+            auto it = std::find_if( std::begin( _queue ), std::end( _queue ), [&]( D const& one )
             {
-                data = *it;
-                _queue.erase( it );
-                return true;
-            }
+                return matcher( one );
+            } );
 
-            if( ms < wait_time )
+            if ( it == std::end( _queue ) )
             {
                 return false;
             }
 
-            g.unlock();
-            std::this_thread::sleep_for( std::chrono::milliseconds( wait_time ) );
-            ms -= wait_time;
-        }
-        return false;
+            data = *it;
+            _queue.erase( it );
+            return true;
+        };
+
+        std::unique_lock<std::mutex> g( _mutex );
+        return _cond.wait_for( g, 
+                             std::chrono::milliseconds( ms ), 
+                             cond );
     }
 
     /*

@@ -1,5 +1,5 @@
 
-PROJECT (sit)
+PROJECT (at)
 
 INCLUDE_DIRECTORIES(
 	include
@@ -12,17 +12,17 @@ ENDIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 file(GLOB_RECURSE SRC_CPP src/*)
 
-ADD_EXECUTABLE(sit ${SRC_CPP})
+ADD_EXECUTABLE(at ${SRC_CPP})
 
 IF (CMAKE_SYSTEM_NAME MATCHES "Windows")
-TARGET_LINK_LIBRARIES( sit flow_ctrl authority encrypt config task startup net data_base log basic gtest )
+TARGET_LINK_LIBRARIES( at gtest )
 ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 if(LINK_THREAD MATCHES "FALSE")
     message("not link thread")
-    TARGET_LINK_LIBRARIES( sit flow_ctrl authority encrypt config task startup net data_base log basic gtest dl )
+    TARGET_LINK_LIBRARIES( at gtest dl )
 else()
 	message("link thread")
-    TARGET_LINK_LIBRARIES( sit flow_ctrl authority encrypt config task startup net data_base log basic gtest pthread dl )
+    TARGET_LINK_LIBRARIES( at gtest pthread dl )
 endif()
 
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "Windows")

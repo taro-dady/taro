@@ -1,7 +1,7 @@
 ﻿
 #pragma once
 
-#include "base/base.h"
+#include "base/inc.h"
 
 #define NAMESPACE_TARO_SYSTEM_BEGIN namespace taro { namespace system {
 #define NAMESPACE_TARO_SYSTEM_END } }

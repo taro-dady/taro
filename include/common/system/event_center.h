@@ -18,7 +18,7 @@ public: // 公共类型
 
 public: // 公共函数
 
-    /**
+    /*
     * @brief      添加事件回调
     *
     * @param[in]  type 事件类型
@@ -43,7 +43,7 @@ public: // 公共函数
         ( void )_slots.add( type, slot_ptr );
     }
 
-    /**
+    /*
     * @brief      删除事件回调
     *
     * @param[in]  type 事件类型
@@ -64,7 +64,7 @@ public: // 公共函数
         return false;
     }
 
-    /**
+    /*
     * @brief      通知事件发生
     *
     * @param[in]  type  事件类型

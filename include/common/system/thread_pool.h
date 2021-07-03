@@ -395,7 +395,7 @@ public: // 公共函数
             }
         }
 
-        rc = false;
+        rc       = false;
         _started = true;
         return true;
     }

@@ -1,7 +1,7 @@
 ﻿
 #pragma once
 
-#include "base/result.h"
+#include "base/inc.h"
 
 #define NAMESPACE_TARO_MEMORY_BEGIN namespace taro { namespace memory {
 #define NAMESPACE_TARO_MEMORY_END } }
