@@ -73,7 +73,7 @@ private: // 私有变量
     uint32_t                _size;
     std::mutex              _mutex;
     std::condition_variable _cond;
-    std::vector< std::shared_ptr<chain_functor_base> > _p;
+    std::list< std::shared_ptr<chain_functor_base> > _p;
 };
 
 NAMESPACE_TARO_FUNCTION_END

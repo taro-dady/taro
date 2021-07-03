@@ -2,7 +2,7 @@
 #pragma once
 
 #include "model/defs.h"
-#include "function/function.h"
+#include "function/inc.h"
 #include <list>
 #include <mutex>
 #include <algorithm>
@@ -133,7 +133,7 @@ private: // 私有函数
     /*
     * @brief: 判断函数对象是否存在
     */
-    bool existed( observer_type const& f, bool )
+    bool existed( observer_type const& f, bool ) const
     {
         return std::find( std::begin( _list ), std::end( _list ), f ) != std::end( _list );
     }
