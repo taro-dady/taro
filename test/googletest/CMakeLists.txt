@@ -1,0 +1,9 @@
+
+PROJECT (gtest)
+
+file(GLOB SRC_CPP src/*)
+
+# static library
+ADD_LIBRARY(gtest_static STATIC ${SRC_CPP})
+SET_TARGET_PROPERTIES(gtest_static PROPERTIES OUTPUT_NAME "gtest")
+SET_TARGET_PROPERTIES(gtest_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)

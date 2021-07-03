@@ -1,0 +1,28 @@
+
+PROJECT (infra)
+
+file(GLOB SRC_CPP src/*)
+file(GLOB SRC_H   include/*)
+
+IF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	file(GLOB SRC_IMPL_CPP src/windows/*)
+	file(GLOB SRC_IMPL_H   include/windows/*)
+	ADD_DEFINITIONS(-D_WINSOCK_DEPRECATED_NO_WARNINGS)
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+	file(GLOB SRC_IMPL_CPP src/linux/*)
+	file(GLOB SRC_IMPL_H   include/linux/*)
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+
+INCLUDE_DIRECTORIES(
+	include
+)
+
+SET(CMAKE_CXX_STANDARD 11)
+
+# shared library
+ADD_LIBRARY(infra SHARED ${SRC_CPP} ${SRC_H} ${SRC_IMPL_CPP} ${SRC_IMPL_H})
+
+# static library
+ADD_LIBRARY(infra_static STATIC ${SRC_CPP} ${SRC_H} ${SRC_IMPL_CPP} ${SRC_IMPL_H})
+SET_TARGET_PROPERTIES(infra_static PROPERTIES OUTPUT_NAME "infra")
+SET_TARGET_PROPERTIES(infra_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
