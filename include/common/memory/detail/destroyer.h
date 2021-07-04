@@ -10,12 +10,13 @@ namespace detail
     struct destroyer
     {
         virtual void release() = 0;
+        virtual ~destroyer() {}
     };
     
     template<class T>
     struct normal_destroyer : public destroyer
     {
-        normal_destroyer( T* p )
+        explicit normal_destroyer( T* p )
             : _p( p )
         {
 
@@ -25,7 +26,6 @@ namespace detail
         {
             if( _p != nullptr )
                 delete _p;
-            delete this;
         }
 
         T* _p;
@@ -45,7 +45,6 @@ namespace detail
         {
             if( _p != nullptr )
                 _del( _p );
-            delete this;
         }
 
         T* _p;

@@ -92,6 +92,15 @@ public:  // 公共函数
         return _list;
     }
 
+    /*
+    * @brief: 清除所有对象
+    */
+    void clear()
+    {
+        std::lock_guard<std::mutex> g( _mutex );
+        _list.clear();
+    }
+
 private: // 私有变量
 
     std::mutex   _mutex;
@@ -388,6 +397,15 @@ public:  // 公共函数
             return std::list<O>();
         }
         return it->second;
+    }
+
+    /*
+    * @brief: 清除所有对象
+    */
+    void clear()
+    {
+        std::lock_guard<std::mutex> g( _mutex );
+        _pool.clear();
     }
 
 private: // 私有类型定义

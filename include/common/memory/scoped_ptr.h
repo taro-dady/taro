@@ -58,8 +58,11 @@ public: // 公共函数
     */
     ~scoped_ptr()
     {
-        if( _del ) 
+        if( _del )
+        {
             _del->release();
+            delete _del;
+        }
         _del = nullptr;
     }
 

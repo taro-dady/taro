@@ -28,18 +28,18 @@ class state_base
 {
 public: /// 公共函数
 
-    /**
+    /*
     * @brief   构造函数
     */
     state_base( S state )
         : _state( state )
     {
-
+        
     }
 
 protected : /// 保护函数定义
 
-    /**
+    /*
     * @brief      虚析构
     */
     virtual ~state_base()
@@ -47,7 +47,7 @@ protected : /// 保护函数定义
 
     }
     
-    /**
+    /*
     * @brief      初始化函数
     */
     virtual void initialize() 
@@ -55,7 +55,7 @@ protected : /// 保护函数定义
 
     }
 
-    /**
+    /*
     * @brief      反初始化函数
     */
     virtual void uninitialize() 
@@ -63,12 +63,12 @@ protected : /// 保护函数定义
 
     }
 
-    /**
+    /*
     * @brief      事件处理函数
     */
     virtual void handle( Args... args ) = 0;
 
-    /**
+    /*
     * @brief      转换状态
     *
     * @param[in]  next 下一个状态
@@ -79,7 +79,7 @@ protected : /// 保护函数定义
         _change_cb( next );
     }
 
-    /**
+    /*
     * @brief      获取状态对象
     */
     state_base_ptr<S, Args...> get_state( S const& state )
