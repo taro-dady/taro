@@ -24,23 +24,23 @@ public: // 公共函数
     * @param[in]  type 事件类型
     * @param[in]  cb   回调函数
     */
-    void add_event( T const& type, event_notify_cb_t const& cb )
+    bool add_event( T const& type, event_notify_cb_t const& cb )
     {
         if( !cb )
         {
-            return;
+            return false;
         }
 
         auto slot_ptr = _slots.find( type );
         if( nullptr != slot_ptr )
         {
-            slot_ptr->push_back( cb );
-            return;
+            return slot_ptr->push_back( cb );
         }
 
         slot_ptr = std::make_shared< model::observers<Args...> >();
         slot_ptr->push_back( cb );
         ( void )_slots.add( type, slot_ptr );
+        return true;
     }
 
     /*
