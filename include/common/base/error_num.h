@@ -12,4 +12,7 @@ enum ret_code_e
     errno_disconnect    = -5,
     errno_unspported    = -6,
     errno_invalid_res   = -7,
+    errno_multiple      = -8,
+    errno_not_found     = -9,
+    errno_set_param     = -10,
 };

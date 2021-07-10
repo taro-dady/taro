@@ -22,7 +22,7 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 LINK_DIRECTORIES(${PROJECT_BINARY_DIR}/lib)
 
 # compile component
-#ADD_SUBDIRECTORY(component/infra)
+ADD_SUBDIRECTORY(component/infra)
 
 # compile googletest
 ADD_SUBDIRECTORY(test/googletest)
@@ -31,4 +31,5 @@ ADD_SUBDIRECTORY(test/googletest)
 #ADD_SUBDIRECTORY(test/unit_test)
 
 # api test
+ADD_SUBDIRECTORY(test/test_tool/test_dynlib) #动态库测试工程
 ADD_SUBDIRECTORY(test/api_test)

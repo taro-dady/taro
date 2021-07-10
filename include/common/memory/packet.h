@@ -21,7 +21,6 @@ public: // 公共函数定义
     *
     * @param[in]  buffer  数据指针
     * @param[in]  len     数据字节数
-    * @return     int32_t < 0 参考error_num.h
     */
     virtual int32_t append( uint8_t* buffer, uint32_t len ) = 0;
 
@@ -29,30 +28,29 @@ public: // 公共函数定义
     * @brief      扩展存储大小
     *
     * @param[in]  sz 需要扩展的内存大小
-    * @return     int32_t < 0 参考error_num.h
     */
     virtual int32_t expand( uint32_t sz ) = 0;
 
     /*
     * @brief      获取数据大小
     *
-    * @return     int32_t < 0 参考error_num.h
+    * @return     uint32_t
     */
-    virtual int32_t size() const = 0;
+    virtual uint32_t size() const = 0;
 
     /*
     * @brief      重置数据大小
     *
-    * @param[in]  sz 数据大小 < 0 参考error_num.h
+    * @param[in]  sz 数据大小
     */
     virtual int32_t resize( uint32_t sz ) = 0;
 
     /*
     * @brief      获取内存容量
     *
-    * @return     int32_t < 0 参考error_num.h
+    * @return     int32_t
     */
-    virtual int32_t cap() const = 0;
+    virtual uint32_t cap() const = 0;
 
     /*
     * @brief      获取数据地址 数据地址= 缓冲起始地址 + 头部偏移(由set_offset设置若不设置则为0)
@@ -65,14 +63,14 @@ public: // 公共函数定义
     /*
     * @brief      设置头部的偏移，用于头的填充，需要手动调用resize重新调整packet数据大小( size - offset )
     *
-    * @param[in]  offset 偏移大小 < 0 参考error_num.h
+    * @param[in]  offset 偏移大小
     */
     virtual int32_t set_head_offset( uint32_t offset ) = 0;
 
     /*
     * @brief      获取头部偏移
     *
-    * @return     int32_t 偏移大小 < 0 参考error_num.h
+    * @return     int32_t 偏移大小
     */
     virtual int32_t get_head_offset() const = 0;
 
@@ -86,15 +84,14 @@ public: // 公共函数定义
     /*
     * @brief      获取附加数据大小
     *
-    * @return     int32_t 扩展数据大小 * @return     int32_t < 0 参考error_num.h
+    * @return     uint32_t 扩展数据大小
     */
-    virtual int32_t extra_data_size() const = 0;
+    virtual uint32_t extra_data_size() const = 0;
 
     /*
     * @brief      扩展附加数据大小
     *
     * @param[in]  sz 需要扩展的内存大小
-    * @return     int32_t 偏移大小 < 0 参考error_num.h
     */
     virtual int32_t expand_extra_data( uint32_t sz ) = 0;
 };

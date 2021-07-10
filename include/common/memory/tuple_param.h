@@ -4,6 +4,7 @@
 #include "memory/defs.h"
 #include "utils/assert.h"
 #include <tuple>
+#include <memory>
 
 NAMESPACE_TARO_MEMORY_BEGIN
 
@@ -26,14 +27,14 @@ using param_base_ptr = std::shared_ptr< param_base >;
 * @brief 带有类型的参数基类
 */
 template<typename ...Args>
-struct param_tuple : public param_base
+struct tuple_param : public param_base
 {
 public: // 公共函数
 
     /*
     * @brief 构造函数
     */
-    param_tuple( Args... args )
+	tuple_param( Args... args )
         : _param( std::make_tuple( args... ) )
     {
 

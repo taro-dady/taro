@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 #include <string>
 #include <thread>
+#include <math.h>
 
 USING_NAMESPACE_TARO
 
